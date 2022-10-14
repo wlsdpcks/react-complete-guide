@@ -2,43 +2,63 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 const ExpenseForm = () => {
   // 1. useState를 독립해서 쓰는 방법
-  // const [enteredTitle, setEnteredTitle] = useState("");
-  // const [enteredAmount, setEnteredAmount] = useState("");
-  // const [enteredDate, setEnteredDate] = useState("");
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
 
   // 2. useState를 통합해서 쓰는 방법
-  const [userInput, setUserInput] = useState({
-    setEnteredTitle: "",
-    setEnteredAmount: "",
-    setEnteredDate: "",
-  });
+  // const [userInput, setUserInput] = useState({
+  //   setEnteredTitle: "",
+  //   setEnteredAmount: "",
+  //   setEnteredDate: "",
+  // });
 
   const titleChangeHandler = (event) => {
-    // setEnteredTitle(event.target.value);
+    setEnteredTitle(event.target.value);
+
+    // 2.
     // setUserInput({
     //   ...userInput,
     //   enteredTitle: event.target.value,
     // });
-    setUserInput((prevState) => {
-      return { ...prevState, enteredTitle: event.target.value };
-    });
+
+    // setUserInput((prevState) => {
+    //   return { ...prevState, enteredTitle: event.target.value };
+    // });
   };
   const amountChangeHandler = (event) => {
-    // setEnteredAmount(event.target.value);
-    setUserInput({
-      ...userInput,
-      setEnteredAmount: event.target.value,
-    });
+    setEnteredAmount(event.target.value);
+
+    // 2.
+    // setUserInput({
+    //   ...userInput,
+    //   setEnteredAmount: event.target.value,
+    // });
   };
   const dateChangeHandler = (event) => {
-    // setEnteredDate(event.target.value);
-    setUserInput({
-      ...userInput,
-      setEnteredDate: event.target.value,
-    });
+    setEnteredDate(event.target.value);
+
+    // 2.
+    // setUserInput({
+    //   ...userInput,
+    //   setEnteredDate: event.target.value,
+    // });
   };
+
+  const submitHandler = (event) => {
+    event.preventDefault(); // 동작하지 않게 해주는 JS문장
+
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+
+    console.log(expenseData);
+  };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
