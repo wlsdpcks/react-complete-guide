@@ -46,15 +46,21 @@ const ExpenseForm = () => {
   };
 
   const submitHandler = (event) => {
-    event.preventDefault(); // 동작하지 않게 해주는 JS문장
+    event.preventDefault(); // 동작하지 않게 해주는 기본JS문장(페이지 다시 로드x)
 
     const expenseData = {
+      // 객체생성
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
 
     console.log(expenseData);
+
+    // 빈 문자열로 다시 설정하는 기능
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
   };
 
   return (
@@ -62,7 +68,11 @@ const ExpenseForm = () => {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" onChange={titleChangeHandler} />
+          <input
+            type="text"
+            value={enteredTitle} // 양방향 라이딩
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -70,6 +80,7 @@ const ExpenseForm = () => {
             type="number"
             min="0.01"
             step="0.01"
+            value={enteredAmount}
             onChange={amountChangeHandler}
           />
         </div>
@@ -79,6 +90,7 @@ const ExpenseForm = () => {
             type="date"
             min="2019-01-01"
             max="2022-12-31"
+            value={enteredDate}
             onChange={dateChangeHandler}
           />
         </div>
