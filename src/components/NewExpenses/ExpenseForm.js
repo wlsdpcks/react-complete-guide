@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   // 1. useState를 독립해서 쓰는 방법
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
@@ -55,8 +55,7 @@ const ExpenseForm = () => {
       date: new Date(enteredDate),
     };
 
-    console.log(expenseData);
-
+    props.onSaveExpenseData(expenseData);
     // 빈 문자열로 다시 설정하는 기능
     setEnteredTitle("");
     setEnteredAmount("");
