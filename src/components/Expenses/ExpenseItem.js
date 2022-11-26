@@ -1,7 +1,8 @@
 import React from "react";
-import ExpenseDate from "./ExpenseDate.js";
-import "./ExpenseItem.css";
+
+import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
+import "./ExpenseItem.css";
 
 const ExpenseItem = (props) => {
   return (
@@ -14,5 +15,5 @@ const ExpenseItem = (props) => {
     </Card>
   );
 };
-// 무상태 컴포넌트(프리젠테이셔널 또는 dumb 컴포넌트) : 아무 상태를 갖지 않고 단지 데이터를 출력하기 위해 존재
+
 export default ExpenseItem;
