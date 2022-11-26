@@ -1,16 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import ExpenseDate from "./ExpenseDate.js";
 import "./ExpenseItem.css";
 import Card from "../UI/Card";
 
 const ExpenseItem = (props) => {
-  const [title, setTitle] = useState(props.title);
-
-  const clickHandler = () => {
-    setTitle();
-    console.log(title);
-  };
-
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
@@ -18,9 +11,8 @@ const ExpenseItem = (props) => {
         <h2>{props.title}</h2>
         <div className="expense-item__price">${props.amount}</div>
       </div>
-      <button onClick={clickHandler}>Change Title</button>
     </Card>
   );
 };
-
+// 무상태 컴포넌트(프리젠테이셔널 또는 dumb 컴포넌트) : 아무 상태를 갖지 않고 단지 데이터를 출력하기 위해 존재
 export default ExpenseItem;
